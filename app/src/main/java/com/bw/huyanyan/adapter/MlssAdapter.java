@@ -61,6 +61,7 @@ import java.util.List;
         ListBean.ResultBean.MlssBean.CommodityListBeanXX commodityListBeanXX = list1.get(position);
         String masterPic = commodityListBeanXX.getMasterPic();
         Glide.with(context).load(masterPic).error(R.mipmap.ic_launcher_round).into(holder.iv);
+
         holder.name.setText(commodityListBeanXX.getCommodityName());
         return convertView;
     }

@@ -15,7 +15,7 @@ import android.content.Context;
     @Override
     public void onCreate() {
         super.onCreate();
-        mcontext = getApplicationContext();
+        mcontext = this;
     }
     public static Context getAppContext(){
         return mcontext;

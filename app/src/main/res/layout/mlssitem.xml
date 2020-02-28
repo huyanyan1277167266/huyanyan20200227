@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center">
 <ImageView
+    android:layout_marginLeft="100dp"
     android:id="@+id/iv"
     android:layout_width="100dp"
     android:layout_height="100dp" />

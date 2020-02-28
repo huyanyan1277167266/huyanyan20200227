@@ -1,49 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <com.stx.xhb.xbanner.XBanner
         android:id="@+id/xb"
         android:layout_width="match_parent"
-        android:layout_height="150dp"></com.stx.xhb.xbanner.XBanner>
+        android:layout_height="@dimen/dp150"></com.stx.xhb.xbanner.XBanner>
     <TextView
+
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/dp40"
         android:text="热销新品"
-        android:textSize="18sp"
+        android:textSize="@dimen/sp18"
         android:textColor="@color/colorPrimary"
-        android:gravity="center"/>
-<GridView
-    android:id="@+id/gv1"
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:numColumns="3"></GridView>
-    <TextView
+        android:gravity="center"
+        android:background="@drawable/a"/>
+    <GridView
+        android:layout_weight="1"
+        android:id="@+id/gv1"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/dp0"
+        android:numColumns="3"></GridView>
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
         android:text="魔丽时尚"
-        android:textSize="18sp"
+        android:textSize="@dimen/sp18"
         android:textColor="@color/colorPrimary"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:background="@drawable/a"/>
     <ListView
+        android:layout_weight="1"
         android:id="@+id/lv"
         android:layout_width="match_parent"
-        android:layout_height="170dp"></ListView>
+        android:layout_height="@dimen/dp0"></ListView>
+
     <TextView
+
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/dp40"
         android:text="品质生活"
-        android:textSize="18sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textSize="@dimen/sp18"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/a"/>
     <GridView
+        android:layout_weight="1"
         android:id="@+id/gv2"
         android:numColumns="2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></GridView>
+        android:layout_height="@dimen/dp0"></GridView>
+
 </LinearLayout>
+
+</RelativeLayout>

@@ -1,5 +1,7 @@
 package com.bw.huyanyan.persenter;
 
+import android.util.Log;
+
 import com.bw.huyanyan.base.BasePersenter;
 import com.bw.huyanyan.base.IBaseView;
 import com.bw.huyanyan.contorct.IHomeContorct;
@@ -25,9 +27,11 @@ import com.bw.huyanyan.model.IHomePageModel;
 
     @Override
     public void getBanner(String url) {
+        Log.i("xxx",url);
         mModel.getBanner(url, new IHomeContorct.IModel.onBannerICallBack() {
             @Override
             public void onBannerSuccess(String str) {
+                Log.i("xxx",str);
                 IBaseView iBaseView = getView();
                 if (iBaseView instanceof IHomeContorct.IView){
                     IHomeContorct.IView iView= (IHomeContorct.IView) iBaseView;
@@ -37,6 +41,7 @@ import com.bw.huyanyan.model.IHomePageModel;
 
             @Override
             public void onBannerFrailure(String str) {
+                Log.i("xxx",str);
                 IBaseView iBaseView = getView();
                 if (iBaseView instanceof IHomeContorct.IView){
                     IHomeContorct.IView iView= (IHomeContorct.IView) iBaseView;
@@ -48,9 +53,11 @@ import com.bw.huyanyan.model.IHomePageModel;
 
     @Override
     public void getList(String url) {
+        Log.i("xxx",url);
     mModel.getList(url, new IHomeContorct.IModel.onListCallBack() {
         @Override
         public void onListSuccess(String str) {
+            Log.i("xxx",str);
             IBaseView iBaseView = getView();
             if (iBaseView instanceof IHomeContorct.IView){
                 IHomeContorct.IView iView= (IHomeContorct.IView) iBaseView;
@@ -60,6 +67,7 @@ import com.bw.huyanyan.model.IHomePageModel;
 
         @Override
         public void onListFrailure(String str) {
+            Log.i("xxx",str);
             IBaseView iBaseView = getView();
             if (iBaseView instanceof IHomeContorct.IView){
                 IHomeContorct.IView iView= (IHomeContorct.IView) iBaseView;

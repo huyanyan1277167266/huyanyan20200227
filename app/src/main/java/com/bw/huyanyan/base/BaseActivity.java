@@ -10,6 +10,7 @@ public abstract class BaseActivity<P extends BasePersenter> extends AppCompatAct
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getlayoutId());
+        mPresenter=initPresenter();
         initView();
         getData();
     }

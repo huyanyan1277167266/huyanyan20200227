@@ -1,5 +1,7 @@
 package com.bw.huyanyan.model;
 
+import android.util.Log;
+
 import com.bw.huyanyan.contorct.IHomeContorct;
 import com.bw.huyanyan.utile.VolleyUtile;
 
@@ -15,11 +17,13 @@ import com.bw.huyanyan.utile.VolleyUtile;
         VolleyUtile.getInstance().doGet(url, new VolleyUtile.ICallBack() {
             @Override
             public void onSuccess(String json) {
+                Log.i("xxx",json);
                 iCallBack.onBannerSuccess(json);
             }
 
             @Override
             public void onError(String msg) {
+                Log.i("xxx",msg);
                 iCallBack.onBannerFrailure(msg);
             }
         });
@@ -30,11 +34,13 @@ import com.bw.huyanyan.utile.VolleyUtile;
         VolleyUtile.getInstance().doGet(url, new VolleyUtile.ICallBack() {
             @Override
             public void onSuccess(String json) {
+                Log.i("xxx",json);
                 callBack.onListSuccess(json);
             }
 
             @Override
             public void onError(String msg) {
+                Log.i("xxx",msg);
                 callBack.onListFrailure(msg);
             }
         });

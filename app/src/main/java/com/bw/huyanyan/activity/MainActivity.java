@@ -1,9 +1,8 @@
 package com.bw.huyanyan.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,6 +33,10 @@ public class MainActivity extends BaseActivity implements IHomeContorct.IView {
     private ListView lv;
     private GridView gv2;
     private XBanner xb;
+    private BasePersenter mpresenter;
+    private RecyclerView rv;
+    private RecyclerView ml;
+    private RecyclerView pz;
 
     @Override
     protected BasePersenter initPresenter() {
@@ -49,39 +52,29 @@ public class MainActivity extends BaseActivity implements IHomeContorct.IView {
     protected void initView() {
         xb = findViewById(R.id.xb);
         gv1 = findViewById(R.id.gv1);
+
         lv = findViewById(R.id.lv);
+
         gv2 = findViewById(R.id.gv2);
+
     }
 
     @Override
     protected void getData() {
-        BasePersenter mpresenter = getPresenter();
+        mpresenter = getPresenter();
         String url="http://mobile.bwstudent.com/small/commodity/v1/bannerShow";
         String urlList="http://mobile.bwstudent.com/small/commodity/v1/commodityList";
         Log.i("xxx",url);
         Log.i("xxx",urlList);
-        if (mpresenter!=null&&mpresenter instanceof IHomePagePresenter){
-            ((IHomePagePresenter)mpresenter).getBanner(url);
-            ((IHomePagePresenter)mpresenter).getList(urlList);
+        if (mpresenter !=null&& mpresenter instanceof IHomePagePresenter){
+            ((IHomePagePresenter) mpresenter).getBanner(url);
+            ((IHomePagePresenter) mpresenter).getList(urlList);
         }
     }
 
     @Override
     public void onBannerSuccess(String str) {
-//        Log.i("xxx",str);
-//        Gson gson = new Gson();
-//        BannerBean bannerBean = gson.fromJson(str,BannerBean.class);
-//        final List<BannerBean.ResultBean> result = bannerBean.getResult();
-//        xb.setBannerData(result);
-//        xb.loadImage(new XBanner.XBannerAdapter() {
-//            @Override
-//            public void loadBanner(XBanner banner, Object model, View view, int position) {
-//                BannerBean.ResultBean resultBean = result.get(position);
-//                String imageUrl = resultBean.getImageUrl();
-//                Glide.with(ListActivity.this).load(imageUrl).into((ImageView) view);
-//
-//            }
-//        });
+
         Log.i("xxx",str);
         Gson gson = new Gson();
         BannerBean bannerBean = gson.fromJson(str, BannerBean.class);
@@ -93,12 +86,13 @@ public class MainActivity extends BaseActivity implements IHomeContorct.IView {
                 BannerBean.ResultBean resultBean = result.get(position);
                 String imageUrl = resultBean.getImageUrl();
                 //配置占位图、错误图、图片加载优先级
-                Glide.with(MainActivity.this).load(imageUrl)
-                        .error(R.mipmap.ic_launcher)
-                        .thumbnail(R.mipmap.ic_launcher)
-                        .into((ImageView) view);
+                Glide.with(MainActivity.this).load(imageUrl) .into((ImageView) view);
+//                        .error(R.mipmap.ic_launcher)
+//                        .thumbnail(R.mipmap.ic_launcher)
+
             }
         });
+
     }
 
     @Override
@@ -108,27 +102,13 @@ public class MainActivity extends BaseActivity implements IHomeContorct.IView {
 
     @Override
     public void onListSuccess(String str) {
-//        Log.i("xxx",str);
-//        Gson gson = new Gson();
-//        ListBean listBean = gson.fromJson(str,ListBean.class);
-//        List<ListBean.ResultBean.RxxpBean.CommodityListBean> commodityList = listBean.getResult().getRxxp().getCommodityList();
-//        //创建适配器
-//        MyAdapter myAdapter = new MyAdapter(ListActivity.this, commodityList);
-//        //设置适配器
-//        lv.setAdapter(myAdapter);
-//        List<ListBean.ResultBean.MlssBean.CommodityListBeanXX> commodityList1 = listBean.getResult().getMlss().getCommodityList();
-//        MyAdapterGvOne myAdapterGvOne = new MyAdapterGvOne(ListActivity.this, commodityList1);
-//        gv1.setAdapter(myAdapterGvOne);
-//        List<ListBean.ResultBean.PzshBean.CommodityListBeanX> commodityList2 = listBean.getResult().getPzsh().getCommodityList();
-//        MyAdapterGvTwo myAdapterGvTwo = new MyAdapterGvTwo(ListActivity.this, commodityList2);
-//        gv2.setAdapter(myAdapterGvTwo);
         Log.i("xxx",str);
         //解析
         Gson gson = new Gson();
         ListBean listBean = gson.fromJson(str, ListBean.class);
         //热销新品
         List<ListBean.ResultBean.RxxpBean.CommodityListBean> commodityList = listBean.getResult().getRxxp().getCommodityList();
-        //创建适配器
+
         RxxpAdapter rxxpAdapter = new RxxpAdapter(MainActivity.this, commodityList);
         gv1.setAdapter(rxxpAdapter);
         //魔丽时尚
